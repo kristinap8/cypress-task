@@ -25,7 +25,7 @@ describe("User Interactions with Articles", () => {
     });
 
     it("Follow the article's author", () => {
-
+        
     });
 
     it("Like the article", () => {
