@@ -21,6 +21,7 @@ it("Login with valid credentials", () => {
 
     LoginPage.login();
 
+    cy.wait(1000);
     HomePage.getTitle().should('include', 'Home');
     HomePage.getHomeLink().should('include.class', 'active');
     HomePage.getUsernameLink().should('include.text', validUserData['username']);

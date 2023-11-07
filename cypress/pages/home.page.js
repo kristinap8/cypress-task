@@ -12,6 +12,9 @@ const articlesList = 'article-list';
 const popularTagsList = 'div.tag-list > a';
 const tagLink = '[ng-show="$ctrl.listConfig.filters.tag"] > .nav-link';
 const tagsLists = 'ul.tag-list';
+const articleAuthorName = ':nth-child(1) > .article-preview > article-meta.ng-isolate-scope > .article-meta > .info > .author';
+const likeBtn = ':nth-child(1) > .article-preview > article-meta.ng-isolate-scope > .article-meta > :nth-child(3) > .pull-xs-right > .btn';
+const likesNumberSpan = ':nth-child(1) > .article-preview > article-meta.ng-isolate-scope > .article-meta > :nth-child(3) > .pull-xs-right > .btn >ng-transclude > span';
 
 class HomePage extends Page {
     getUsernameLink() {
@@ -62,12 +65,32 @@ class HomePage extends Page {
         return super.getElement(tagsLists);
     }
 
+    getArticleAuthor() {
+        return super.getElement(articleAuthorName);
+    }
+
+    getLikesNumber() {
+        return super.getElement(likesNumberSpan);
+    }
+
+    getLikeButton() {
+        return super.getElement(likeBtn);
+    }
+
     readMore() {
         super.clickElement(readMoreLink);
     }
 
     goToProfile() {
         super.clickElement(usernameLink);
+    }
+
+    goToArticleAuthor() {
+        super.clickElement(articleAuthorName);
+    }
+
+    likeLastArtcile() {
+        super.clickElement(likeBtn);
     }
 }
   
