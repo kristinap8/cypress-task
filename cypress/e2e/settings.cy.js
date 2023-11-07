@@ -51,5 +51,5 @@ it("Change the password", () => {
     SettingsPage.enterNewPassword(validUserData["password"]);
     cy.wait(100);
     SettingsPage.updateSettings();
-    SettingsPage.logOut();
+    cy.wait(100);
 })
