@@ -6,7 +6,6 @@
   "scripts": {
     "cypress:open": "npx cypress open",
     "cypress:run": "npx cypress run",
-    "report:open": "npx open-cli cypress/reports/html/index.html",
     "report:merge": "mochawesome-merge cypress/results/json/*.json > index.json",
     "report:generate": "marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html"
   },
