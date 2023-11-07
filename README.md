@@ -10,6 +10,8 @@
 ## Summary of Repo
 
 This repository contains automated test cases for [RealWorld](https://demo.realworld.io/#) implemented using Cypress. 
+Link to the generated report: https://kristinap8.github.io/cypress-task/.
+The github workflow is implemented in the additional branch.
 
 ## Requirements
 
