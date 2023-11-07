@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress open"
+    "cypress:open": "npx cypress open",
+    "cypress:run": "npx cypress run",
+    "report:open": "npx open-cli cypress/reports/html/index.html"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +14,7 @@
   "devDependencies": {
     "@faker-js/faker": "^8.2.0",
     "cypress": "^13.4.0",
-    "cypress-mochawesome-reporter": "^3.6.1"
+    "cypress-mochawesome-reporter": "^3.6.1",
+    "open-cli": "^7.2.0"
   }
 }

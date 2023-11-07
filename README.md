@@ -1,41 +1,57 @@
-# Automated Tests for RealWorld Web Application
+# Conduit -- testing of RealWord Web Application
 
-This repository contains automated tests for the [RealWorld](https://demo.realworld.io/) web application.
+## Table of Contents
+
+1. [Summary of Repo](#summary-of-repo)
+2. [Requirements](#requirements)
+3. [Steps to Install](#steps-to-install)
+4. [Steps to Launch and Create a Report](#steps-to-launch-and-create-a-report)
+
+## Summary of Repo
+
+This repository contains automated test cases for [RealWorld](https://demo.realworld.io/#) implemented using Cypress. 
 
 ## Requirements
 
-Before running the tests, ensure you have the following software and dependencies installed on your machine:
+- Node.js: Ensure you have Node.js installed.
+- Cypress: Install Cypress by running `npm install cypress --save-dev`.
+- Mochawesome reporter for Cypress: Install by running `npm i --save-dev cypress-mochawesome-reporter`.
+- Other dependencies: Check the `package.json` file for additional dependencies.
 
-- [Node.js](https://nodejs.org/): Download and install Node.js
+## Steps to Install
 
-## Installation
+1. Clone this repository:
 
-To set up the project, follow these steps:
+```bash
+git clone
+https://github.com/kristinap8/cypress-task.git
+```
 
-1. Clone this repository to your local machine:
+2. Navigate to the project directory:
 
-   ```
-   git clone https://github.com/kristinap8/cypress-task.git
-   ```
-2. Navigate to the project folder:
+```bash
+cd cypress-task
 ```
-cd cypressTask
-```
-3. Install the required dependencies:
-```
-npm ci
-```
-#### Running Tests
-Execute Cypress tests using the following command:
 
-```
-npm run test
-```
-This command will run the Cypress tests.
+3. Install project dependencies:
 
-#### Generating Test Reports
-To run Cypress tests and upload the test results to the Cypress Dashboard, use the following command:
+```bash
+npm install
+```
 
+## Steps to Launch and Create a Report:
+
+1. Run tests with default browser and generate a html-report:
+
+```bash
+npm run cypress:run
 ```
-npm run test-and-upload
+
+2. Open the generated report in a browser:
+
+```bash
+npm run report:open
 ```
+
+
+
