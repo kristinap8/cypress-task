@@ -21,9 +21,6 @@ it("Change the password", () => {
 
     SettingsPage.enterNewPassword(newPassword);
     SettingsPage.getNewPasswordInputField().should('have.attr', 'type').and('eq', 'password');
-    
-    validUserData["password"] = newPassword;
-    cy.writeFile('cypress/fixtures/validUser.json', JSON.stringify(validUserData, null, 2));
 
     SettingsPage.updateSettings();
 
@@ -49,4 +46,10 @@ it("Change the password", () => {
 
     HomePage.getTitle().should('include', 'Home');
     HomePage.getUsernameLink().should('include.text', validUserData["username"]);
+
+    SettingsPage.navigate();
+    SettingsPage.enterNewPassword(validUserData["password"]);
+    cy.wait(100);
+    SettingsPage.updateSettings();
+    SettingsPage.logOut();
 })
