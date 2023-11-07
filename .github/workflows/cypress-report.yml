@@ -6,10 +6,10 @@ on:
       - 'additional'
 
 jobs:
-  cypress-e2e-electron:
-    name: Run on Electron
+  cypress:
+    name: Run Cypress Tests and Deploy Report
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -17,9 +17,6 @@ jobs:
       - name: Install Dependencies
         run: |
           npm ci
-          $(npm bin)/cypress cache path
-          $(npm bin)/cypress cache list
-          $(npm bin)/cypress verify
 
       - name: Run Cypress Tests
         run: npm run cypress:run
