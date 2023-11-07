@@ -22,10 +22,9 @@ jobs:
         run: npm run cypress:run
         continue-on-error: true
 
-      - name: Copy Test Execution Videos
+      - name: Create Directory
         run: |
           mkdir public
-          cp -r cypress/videos public/videos
 
       - name: Merge Test Results
         run: npm run report:merge
