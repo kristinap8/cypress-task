@@ -2,9 +2,6 @@ name: Generate Cypress Report
 
 on:
   push:
-    branches:
-      - 'master'
-
 jobs:
   cypress-e2e-electron:
     name: Run on Electron
