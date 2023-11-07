@@ -6,7 +6,9 @@
   "scripts": {
     "cypress:open": "npx cypress open",
     "cypress:run": "npx cypress run",
-    "report:open": "npx open-cli cypress/reports/html/index.html"
+    "report:open": "npx open-cli cypress/reports/html/index.html",
+    "report:merge": "mochawesome-merge cypress/results/json/*.json > index.json",
+    "report:generate": "marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +16,11 @@
   "devDependencies": {
     "@faker-js/faker": "^8.2.0",
     "cypress": "^13.4.0",
-    "cypress-mochawesome-reporter": "^3.6.1",
     "open-cli": "^7.2.0"
+  },
+  "dependencies": {
+    "cypress-multi-reporters": "^1.6.4",
+    "mocha": "^10.2.0",
+    "mochawesome": "^7.1.3"
   }
 }

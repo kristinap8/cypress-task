@@ -1,0 +1,163 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-11-07T14:56:03.334Z",
+    "end": "2023-11-07T14:57:00.612Z",
+    "duration": 57278,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "fa685f02-97b8-4c8a-b396-882925b0ec2e",
+      "title": "",
+      "fullFile": "cypress/e2e/home.cy.js",
+      "file": "cypress/e2e/home.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "fabcdd48-a8cc-4940-8018-970b48c46282",
+          "title": "User Interactions with Articles",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Filter articles by popular tags",
+              "fullTitle": "User Interactions with Articles Filter articles by popular tags",
+              "timedOut": null,
+              "duration": 24222,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": "\"videos/home.cy.js.mp4\"",
+              "code": "_home.default.getGlobalFeed().should('include.class', 'active');\n_home.default.getArticlesList().should('be.visible');\n_home.default.getPopularTagsList().each($element => {\n  cy.wrap($element).click();\n  cy.wait(2000);\n  _home.default.getTagLink().should('include.text', $element.text());\n  _home.default.getTagsLists().each($tagList => {\n    expect($tagList.text()).contain($element.text());\n  });\n});",
+              "err": {},
+              "uuid": "b6547ce2-755a-4f91-8b9e-ea302c0002e4",
+              "parentUUID": "fabcdd48-a8cc-4940-8018-970b48c46282",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Follow the article's author",
+              "fullTitle": "User Interactions with Articles Follow the article's author",
+              "timedOut": null,
+              "duration": 11298,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": "\"videos/home.cy.js.mp4\"",
+              "code": "_login.default.navigate();\n_login.default.fillInputs(validUserData[\"email\"], validUserData[\"password\"]);\n_login.default.login();\ncy.wait(1000);\n_home.default.goToGlobalFeed();\n_home.default.getGlobalFeed().should('include.class', 'active');\n_home.default.getArticlesList().should('be.visible');\n_home.default.getArticleAuthor().invoke('text').then(author => {\n  _home.default.goToArticleAuthor();\n  _home.default.getTitle().should('include', author);\n  _profile.default.getFollowButton().should('include.text', `Follow ${author}`);\n  _profile.default.follow();\n  _profile.default.getFollowButton().should('include.text', `Unfollow ${author}`);\n});\n_profile.default.follow();\ncy.wait(2000);",
+              "err": {},
+              "uuid": "3b15731b-9929-4b0d-8305-f6a906df16c7",
+              "parentUUID": "fabcdd48-a8cc-4940-8018-970b48c46282",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Like the article",
+              "fullTitle": "User Interactions with Articles Like the article",
+              "timedOut": null,
+              "duration": 10078,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": "\"videos/home.cy.js.mp4\"",
+              "code": "_login.default.navigate();\n_login.default.fillInputs(validUserData[\"email\"], validUserData[\"password\"]);\n_login.default.login();\n_home.default.goToGlobalFeed();\n_home.default.getGlobalFeed().should('include.class', 'active');\n_home.default.getArticlesList().should('be.visible');\n_home.default.getLikesNumber().invoke('text').then(likesBefore => {\n  _home.default.likeLastArtcile();\n  cy.wait(2000);\n  _home.default.getLikesNumber().invoke('text').then(likesAfter => {\n    expect(likesAfter - likesBefore).to.be.eq(1);\n  });\n});\n_home.default.getLikeButton().should('not.include.class', 'outline');\n_home.default.likeLastArtcile();\ncy.wait(2000);",
+              "err": {},
+              "uuid": "61c09c6c-49f3-46b0-9ade-9c37830df35e",
+              "parentUUID": "fabcdd48-a8cc-4940-8018-970b48c46282",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Comment on the article",
+              "fullTitle": "User Interactions with Articles Comment on the article",
+              "timedOut": null,
+              "duration": 8761,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": "\"videos/home.cy.js.mp4\"",
+              "code": "_login.default.navigate();\n_login.default.fillInputs(validUserData[\"email\"], validUserData[\"password\"]);\n_login.default.login();\ncy.wait(1000);\n_home.default.goToGlobalFeed();\n_home.default.getGlobalFeed().should('include.class', 'active');\n_home.default.getArticlesList().should('be.visible');\n_home.default.getArticleAuthor().invoke('text').as('username');\n_home.default.getLastArticleTitle().invoke('text').as('title');\n_home.default.readMore();\ncy.get('@title').then(title => {\n  cy.get('@username').then(name => {\n    _article.default.getTitle().should('include', title);\n    _article.default.getArticleTitle().should('have.text', title);\n    _article.default.getUsername().should('have.text', name);\n  });\n});\n_article.default.getCommentTextArea().should('be.visible');\n_article.default.getPostCommentButton().should('be.visible');\n_article.default.writeComment(commentText);\n_article.default.getCommentTextArea().should('have.value', commentText);\n_article.default.postComment();\n_article.default.getCommentText().should('have.text', commentText);\n_article.default.getCommentDate().invoke('text').then(dateText => {\n  const today = new Date().toLocaleDateString();\n  const date = new Date(Date.parse(dateText)).toLocaleDateString();\n  expect(date).to.be.equal(today);\n});\n_article.default.deleteComment();",
+              "err": {},
+              "uuid": "5ac5ebb4-1d6b-4960-b8f5-9c705fd78366",
+              "parentUUID": "fabcdd48-a8cc-4940-8018-970b48c46282",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b6547ce2-755a-4f91-8b9e-ea302c0002e4",
+            "3b15731b-9929-4b0d-8305-f6a906df16c7",
+            "61c09c6c-49f3-46b0-9ade-9c37830df35e",
+            "5ac5ebb4-1d6b-4960-b8f5-9c705fd78366"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 54359,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/json",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
